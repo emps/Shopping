@@ -1,20 +1,27 @@
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ * @flow
+ */
+
 import React, { Component } from 'react';
 import {
-  AppRegistry
-
+  Platform,
+  StyleSheet,
+  Text,
+  AppRegistry,
+  View
 } from 'react-native';
 
 import Login from './components/Login/Login.js'
-/*import Products from './components/Products/Products.js'*/
-export default class App extends Component {
 
+
+export default class App extends Component<{}> {
   render() {
     return (
       <Login/>
     );
-
   }
-
 }
 
-/* @flow */
+AppRegistry.registerComponent('salute', () => App);

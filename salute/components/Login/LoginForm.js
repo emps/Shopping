@@ -12,15 +12,23 @@ import {
 } from 'react-native';
 
 export default class LoginForm extends Component {
+  state = {
+    users: [],
+    products: [],
+  };
+
+
   login=()=>{
-    fetch('http://192.168.0.141:1337/Users?email=a@a.com')
+    var url = "http://192.168.0.141:1337/Users?email="+this.state.email;
+    alert(url);
+    fetch(url)
      .then((response) => response.json())
      .then((json) => {
-       console.log(json);
-       if(json.lenght > 0){
+       console.log(json.length);
+       if(json.length > 0){
          alert("Logado com sucesso!")
        } else {
-         alert("Usuário não encontrado!")
+         // alert("Usuário não encontrado!")
        }
 
 
@@ -28,12 +36,18 @@ export default class LoginForm extends Component {
      })
      .catch((error) => {
        alert(error);
-       alert('Error getting Products.');
+       alert('Error getting users.');
      })
-  };
+  }
 
-  clickAlert=()=>{
-    alert("CLICK");
+  onPress=() =>{
+    alert("CLICK - "+tag);
+  }
+
+  componentWillMount(){
+    // this.setState({email})
+    // this.setState({email})
+
   }
 
   render() {
@@ -46,28 +60,30 @@ export default class LoginForm extends Component {
 
 
           <TextInput
-          style={styles.input}
-          placeholder="Email"
-          placeholderTextColor='rgba(255,255,255,0.7)'
-          returnKeyType='next'
-          onSubmitEditing={() => this.passwordInput.focus()}
-          keyboardType='email-address'
-          autoCapitalize='none'
-          autoCorrect={false}
+            style={styles.input}
+            onChangeText={(text) => this.setState({email: text})}
+            placeholder="Email"
+            placeholderTextColor='rgba(255,255,255,0.7)'
+            returnKeyType='next'
+            onSubmitEditing={() => this.passwordInput.focus()}
+            keyboardType='email-address'
+            autoCapitalize='none'
+            autoCorrect={false}
           />
 
           <TextInput
            style={styles.input}
+           onChangeText={(text) => this.setState({password: text})}
            placeholder="Senha"
            secureTextEntry
            placeholderTextColor='rgba(255,255,255,0.7)'
            returnKeyType='go'
            ref={(input) => this.passwordInput = input}
-           />
+         />
 
-           <TouchableOpacity style={styles.buttonContainer} onPress={this.login} >
-            <Text style={styles.buttonText}>Login</Text>
-           </TouchableOpacity>
+         <TouchableOpacity style={styles.buttonContainer} onPress={this.login} >
+          <Text style={styles.buttonText}>Login</Text>
+         </TouchableOpacity>
 
 
 

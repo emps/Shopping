@@ -21,8 +21,12 @@ module.exports = {
 
     password:{
       type: 'string',
-      email: true
     },
+
+    photo:{
+      type: 'text',
+      
+    }
 
   },
 
