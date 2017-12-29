@@ -19,8 +19,8 @@ import Login  from './../components/Login/Login.js'
 export default class HomeScreen extends Component {
   state = {
     user:{},
-    email:"",
-    password:""
+    email:"a@a.com",
+    password:"123321"
   };
 
   static navigationOptions = {

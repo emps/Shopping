@@ -49,8 +49,8 @@ export default class Login extends Component {
 class LoginForm extends Component {
   state = {
     user:{},
-    email:"",
-    password:""
+    email:"a@a.com",
+    password:"123321"
   };
 
   login=()=>{
@@ -65,7 +65,6 @@ class LoginForm extends Component {
          this.state.user = json[0];
 
          if( this.state.password == this.state.user.password ){
-           alert("Usuário logado!\nBem vindo "+ this.state.user.name)
            this.props.navigation.navigate('Profile',{user: this.state.user});
 
          } else {
